@@ -2,7 +2,7 @@ import React from "react"
 import {View,Text,StyleSheet} from "react-native"
 
 
-const LoginScreen = ()=>{
+const LoginScreen = ({navigation})=>{
     return (
         <View><Text style={styles.head}>Login</Text></View>
     )
@@ -14,3 +14,5 @@ const styles = StyleSheet.create({
         fontSize:40
     }
 })
+
+export default LoginScreen

@@ -1,13 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import OnboardingScreen from "./screens/OnboardingScreen"
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import Navigator from "./navigation/Navigator"
 
 export default function App() {
   return (
-    <View style={styles.container}>
-        <OnboardingScreen />
-    </View>
+        <Navigator />
+    
   );
 }
 
