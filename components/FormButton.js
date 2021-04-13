@@ -2,9 +2,9 @@ import React from "react"
 import {Text,TouchableOpacity,StyleSheet} from "react-native"
 import {windowHeight,windowWidth} from "../utils/Dimensions"
 
-const FormButton = ({buttonTitle,...rest})=>{
+const FormButton = ({buttonTitle,buttonColor,...rest})=>{
     return(
-    <TouchableOpacity {...rest} style={styles.buttonContainer}>
+    <TouchableOpacity {...rest} style={[styles.buttonContainer,{backgroundColor:buttonColor}]}>
         <Text style={styles.buttonText}>{buttonTitle}</Text>
     </TouchableOpacity>
     )
@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         marginTop:10,
         width:"100%",
         height:windowHeight/15,
-        backgroundColor:"#2e64e5",
         alignItems:"center",
         justifyContent:'center',
         padding:10,

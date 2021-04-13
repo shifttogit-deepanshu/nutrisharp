@@ -32,6 +32,7 @@ const LoginScreen = ({navigation}) => {
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
+        colorBorder="#ccc"
       />
 
       <FormInput
@@ -40,10 +41,12 @@ const LoginScreen = ({navigation}) => {
         placeholderText="Password"
         iconType="lock"
         secureTextEntry={true}
+        colorBorder="#ccc"
       />
 
       <FormButton
         buttonTitle="Sign In"
+        buttonColor="#2e64e5"
         onPress={() => {}}
       />
 
@@ -110,8 +113,7 @@ const styles = StyleSheet.create({
     marginVertical: 35,
   },
   navButtonText: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 14,
     color: '#2e64e5',
     fontFamily: 'Lato-Regular',
   },
