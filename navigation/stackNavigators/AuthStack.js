@@ -43,7 +43,7 @@ const Stack = createStackNavigator()
 //To enable onboarding functionality on first startup change the initial route to {routename}
 //To always show onboarding screen, change initialRoute to 'onboard'
   return (
-        <Stack.Navigator  initialRouteName={routeName}>
+        <Stack.Navigator  initialRouteName="onboard">
             <Stack.Screen options={{headerShown:false}} name="onboard" component={OnboardingScreen} />
             <Stack.Screen options={{headerShown:false}} name="loginpage" component={LoginScreen} />
         </Stack.Navigator>      
