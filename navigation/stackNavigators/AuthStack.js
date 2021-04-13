@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import 'react-native-gesture-handler'
-import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import OnboardingScreen from "../../screens/OnboardingScreen"
 import LoginScreen from "../../screens/LoginScreen"
@@ -40,10 +39,10 @@ else{
 
 const Stack = createStackNavigator()
 
-//To enable onboarding functionality on first startup change the initial route to {routename}
+//To enable onboarding functionality on first startup change the initial route to {routeName}
 //To always show onboarding screen, change initialRoute to 'onboard'
   return (
-        <Stack.Navigator  initialRouteName="onboard">
+      <Stack.Navigator  initialRouteName={routeName}>
             <Stack.Screen options={{headerShown:false}} name="onboard" component={OnboardingScreen} />
             <Stack.Screen options={{headerShown:false}} name="loginpage" component={LoginScreen} />
         </Stack.Navigator>      

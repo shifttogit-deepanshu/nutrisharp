@@ -13,7 +13,7 @@ const OnboardingScreen = ({navigation})=>{
               image: <Image style={styles.logo} source={require('../assets/images/ob1.png')} />,
               title: 'Through a Life cycle Based Intervention',
               subtitle: 'Reproductive Age Group (18-35 years)',
-              titleStyles:{fontSize:20,fontFamily:'Lato-Bold'},
+              titleStyles:{fontSize:20,fontWeight:'bold'},
               subTitleStyles:{fontSize:14,fontFamily:'Lato-Regular'}
             },
             {
@@ -21,7 +21,7 @@ const OnboardingScreen = ({navigation})=>{
                 image: <Image style={styles.logo} source={require('../assets/images/ob2.png')} />,
                 title: 'Nutrition',
                 subtitle: 'Improving Nutrition focused Maternal New-born Child Health Practices Among Women',
-                titleStyles:{fontSize:20,fontFamily:'Lato-Bold'},
+                titleStyles:{fontSize:20,fontWeight:'bold'},
                 subTitleStyles:{fontSize:14,fontFamily:'Lato-Regular'}
               },
             {
@@ -29,7 +29,7 @@ const OnboardingScreen = ({navigation})=>{
                 image: <Image style={styles.logo} source={require('../assets/images/ob3.png')} />,
                 title: 'Nutrition',
                 subtitle: 'Improving Nutrition focused Maternal New-born Child Health Practices Among Women',
-                titleStyles:{fontSize:20,fontFamily:'Lato-Bold'},
+                titleStyles:{fontSize:20,fontWeight:'bold'},
                 subTitleStyles:{fontSize:14,fontFamily:'Lato-Regular'}
               },
             {
@@ -37,7 +37,7 @@ const OnboardingScreen = ({navigation})=>{
               image: <Image style={styles.logo} source={require('../assets/images/logo.png')} />,
               title: 'In Association',
               subtitle: 'School Health Annual Report Programme',
-              titleStyles:{fontSize:20,fontFamily:'Lato-Bold'},
+              titleStyles:{fontSize:20,fontWeight:'bold'},
               subTitleStyles:{fontSize:14,fontFamily:'Lato-Regular'}
             },
             
