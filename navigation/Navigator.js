@@ -1,8 +1,8 @@
 import React from "react"
 import Routes from "./Routes"
 
-const Provider = ()=>{
+const Navigator = ()=>{
     return <Routes />
 }
 
-export default Provider
+export default Navigator

@@ -12,11 +12,25 @@ import {
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
+import {auth} from "../firebase/firebase"
 
 const LoginScreen = ({navigation}) => {
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
   const [error,setError] = useState(null)
+
+  const handleSignIn = (email,password)=>{
+    setError(null)
+    auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
+
+      var user = userCredential.user;
+      console.log(user)
+  }).catch((error) => {
+    console.log(error)
+    setError(error.message)
+  });
+
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -55,7 +69,7 @@ const LoginScreen = ({navigation}) => {
       <FormButton
         buttonTitle="Sign In"
         buttonColor="#2e64e5"
-        onPress={() => {setError('Unable to Sign In!')}}
+        onPress={() => {handleSignIn(email,password)}}
       />
 
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>

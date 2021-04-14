@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, Platform, StyleSheet,Alert} from 'react-na
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
+import {auth} from "../firebase/firebase"
 
 const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = useState();
@@ -10,10 +11,17 @@ const SignUpScreen = ({navigation}) => {
   const [confirmPassword, setConfirmPassword] = useState();
   const [error,setError] = useState(null)
 
-  const handleSubmit = ()=>{
+  const handleSubmit = (email, password,confirmPassword)=>{
+    setError(null)
     if(password!=confirmPassword){
         return setError('password did not match')
     }
+    auth.createUserWithEmailAndPassword(email,password).then(userCredential=>{
+        console.log(userCredential)
+    }).catch(e=>{
+        console.log(e)
+        setError(e.message)
+    })
   }
   return (
     <View style={styles.container}>
