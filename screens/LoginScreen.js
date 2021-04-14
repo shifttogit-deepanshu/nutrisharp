@@ -6,7 +6,8 @@ import {
   Image,
   Platform,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -15,6 +16,7 @@ import SocialButton from '../components/SocialButton';
 const LoginScreen = ({navigation}) => {
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
+  const [error,setError] = useState(null)
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -23,7 +25,13 @@ const LoginScreen = ({navigation}) => {
       style={styles.logo}
     />
       <Text style={styles.text}>NUTRISHARP</Text>
-      
+      {error && Alert.alert('Error!',error, [
+        {
+          text: "Cancel",
+          onPress: () => setError(null),
+          style: "cancel"
+        }
+      ])}
       <FormInput
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
@@ -47,7 +55,7 @@ const LoginScreen = ({navigation}) => {
       <FormButton
         buttonTitle="Sign In"
         buttonColor="#2e64e5"
-        onPress={() => {}}
+        onPress={() => {setError('Unable to Sign In!')}}
       />
 
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>

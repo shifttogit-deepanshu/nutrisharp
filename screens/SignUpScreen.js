@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, TouchableOpacity, Platform, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, Platform, StyleSheet,Alert} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
@@ -8,11 +8,23 @@ const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  const [error,setError] = useState(null)
 
+  const handleSubmit = ()=>{
+    if(password!=confirmPassword){
+        return setError('password did not match')
+    }
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Create an account</Text>
-
+      {error && Alert.alert('Error!',error, [
+        {
+          text: "Cancel",
+          onPress: () => setError(null),
+          style: "cancel"
+        }
+      ])}
       <FormInput
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
@@ -44,7 +56,7 @@ const SignUpScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle="Sign Up"
-        onPress={() => register(email, password)}
+        onPress={() => handleSubmit(email, password,confirmPassword)}
         buttonColor="#2e64e5"
       />
 
