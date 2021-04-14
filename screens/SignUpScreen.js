@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, TouchableOpacity, Platform, StyleSheet,Alert} from 'react-native';
+import {View, Text, TouchableOpacity, Platform, StyleSheet,Alert,ActivityIndicator} from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
@@ -10,17 +10,22 @@ const SignUpScreen = ({navigation}) => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [error,setError] = useState(null)
+  const [isLoading,setIsLoading] = useState(false)
 
   const handleSubmit = (email, password,confirmPassword)=>{
     setError(null)
+    setIsLoading(true)
     if(password!=confirmPassword){
+      setIsLoading(false)
         return setError('password did not match')
     }
     auth.createUserWithEmailAndPassword(email,password).then(userCredential=>{
-        console.log(userCredential)
+      
+        return setIsLoading(false)
     }).catch(e=>{
         console.log(e)
         setError(e.message)
+        setIsLoading(false)
     })
   }
   return (
@@ -62,11 +67,11 @@ const SignUpScreen = ({navigation}) => {
         colorBorder="#ccc"
       />
 
-      <FormButton
+      {isLoading ? <ActivityIndicator size="large" color="#2e64e5" />:<FormButton
         buttonTitle="Sign Up"
         onPress={() => handleSubmit(email, password,confirmPassword)}
         buttonColor="#2e64e5"
-      />
+      />}
 
       <View style={styles.textPrivate}>
         <Text style={styles.color_textPrivate}>

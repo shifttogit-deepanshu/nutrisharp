@@ -7,7 +7,6 @@ import * as firebase from "firebase"
 // Add the Firebase products that you want to use
 import "firebase/auth";
 
-
 const app = firebase.initializeApp({
   apiKey: 'AIzaSyDMh_WMZ9WXnQgGwjGjIu3_59sH49brzRU',
   authDomain: 'nutrisharp-dev-3ee73.firebaseapp.com',
@@ -17,7 +16,6 @@ const app = firebase.initializeApp({
   appId: '558960443244:web:97c9d839f1d03fb4513d49',
   measurementId: 'G-KEHNK19Q9P',
 })
-
 
 export default app
 export const auth = app.auth()

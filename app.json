@@ -26,7 +26,18 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyDMh_WMZ9WXnQgGwjGjIu3_59sH49brzRU",
+          "authDomain": "nutrisharp-dev-3ee73.firebaseapp.com",
+          "projectId": "nutrisharp-dev-3ee73",
+          "storageBucket": "nutrisharp-dev-3ee73.appspot.com",
+          "messagingSenderId": "558960443244",
+          "appId": "558960443244:web:97c9d839f1d03fb4513d49",
+          "measurementId": "G-KEHNK19Q9P"
+          }
+      }
     }
   }
 }

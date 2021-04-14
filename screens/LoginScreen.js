@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState,useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,8 @@ import {
   Platform,
   StyleSheet,
   ScrollView,
-  Alert
+  Alert,
+  ActivityIndicator
 } from 'react-native';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
@@ -18,21 +19,26 @@ const LoginScreen = ({navigation}) => {
   const [email,setEmail] = useState()
   const [password,setPassword] = useState()
   const [error,setError] = useState(null)
+  const [isLoading,setIsLoading] = useState(false)
 
   const handleSignIn = (email,password)=>{
+
+    
     setError(null)
+    setIsLoading(true)
     auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
 
-      var user = userCredential.user;
-      console.log(user)
+      return setIsLoading(false)
+      
   }).catch((error) => {
     console.log(error)
     setError(error.message)
+    return setIsLoading(false)
   });
-
   }
 
   return (
+
     <ScrollView contentContainerStyle={styles.container}>
     <Image
       source={require('../assets/images/logo.png')}
@@ -66,11 +72,15 @@ const LoginScreen = ({navigation}) => {
         colorBorder="#ccc"
       />
 
-      <FormButton
-        buttonTitle="Sign In"
-        buttonColor="#2e64e5"
-        onPress={() => {handleSignIn(email,password)}}
-      />
+      {isLoading ? <ActivityIndicator size="large" color="#2e64e5" />:<FormButton
+      buttonTitle="Sign In"
+      buttonColor="#2e64e5"
+      onPress={() => handleSignIn(email,password)}
+    /> }
+     
+        
+      
+      
 
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
         <Text style={styles.navButtonText}>Forgot Password?</Text>
