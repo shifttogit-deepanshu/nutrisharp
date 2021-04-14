@@ -58,12 +58,12 @@ export default ()=>{
                   if(user){
                     // AsyncStorage.setItem('userToken',user.uid)
                     setIsLoggedIn(user.uid)
-                    console.log(user)
+                    
                   }
                   else{
                     // AsyncStorage.removeItem('userToken')
                     setIsLoggedIn(null)
-                    console.log(user)
+                    
                   }
         })
         return unsubscribe

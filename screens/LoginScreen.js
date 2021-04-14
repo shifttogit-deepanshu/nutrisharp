@@ -14,6 +14,9 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 import {auth} from "../firebase/firebase"
+import * as Google from 'expo-google-app-auth';
+import * as firebase from "firebase"
+
 
 const LoginScreen = ({navigation}) => {
   const [email,setEmail] = useState()
@@ -36,6 +39,55 @@ const LoginScreen = ({navigation}) => {
     return setIsLoading(false)
   });
   }
+
+
+const handleFBLogin = ()=>{
+
+}
+
+const onSignIn = (googleUser)=> {
+  console.log('Google Auth Response', googleUser);
+  // We need to register an Observer on Firebase Auth to make sure auth is initialized.
+  var unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+    unsubscribe();
+    // Check if we are already signed-in Firebase with the correct user.
+      // Build Firebase credential with the Google ID token.
+      var credential = firebase.auth.GoogleAuthProvider.credential(
+        googleUser.idToken,googleUser.accessToken
+          );
+
+      // Sign in with credential from the Google user.
+      auth.signInWithCredential(credential).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+   
+  });
+}
+
+const signInWithGoogleAsync = async ()=> {
+  try {
+    const result = await Google.logInAsync({
+      androidClientId: '558960443244-lsjb2pduuv1tm3qql3j3q7rkl5u1prat.apps.googleusercontent.com',
+      scopes: ['profile', 'email'],
+    });
+
+    if (result.type === 'success') {
+      onSignIn(result)
+      return result.accessToken;
+    } else {
+      return { cancelled: true };
+    }
+  } catch (e) {
+    return { error: true };
+  }
+}
 
   return (
 
@@ -93,7 +145,7 @@ const LoginScreen = ({navigation}) => {
             btnType="facebook"
             color="#4867aa"
             backgroundColor="#e6eaf4"
-            onPress={() => fbLogin()}
+            onPress={() => handleFBLogin()}
           />
 
           <SocialButton
@@ -101,7 +153,7 @@ const LoginScreen = ({navigation}) => {
             btnType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            onPress={() => googleLogin()}
+            onPress={() => signInWithGoogleAsync()}
           />
         </View>
       ) : null}

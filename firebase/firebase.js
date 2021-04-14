@@ -17,5 +17,8 @@ const app = firebase.initializeApp({
   measurementId: 'G-KEHNK19Q9P',
 })
 
+
+
 export default app
 export const auth = app.auth()
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
